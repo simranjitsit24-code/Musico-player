@@ -14,7 +14,7 @@ function SearchBar() {
 				</div>
 				<button
 					type="button"
-					className="px-5 py-2 rounded-full bg-emerald-200 text-emerald-950 font-semibold hover:bg-emerald-100 transition-colors"
+					className="px-5 py-2 rounded-full bg-emerald-700 text-emerald-50 font-semibold hover:bg-emerald-600 transition-colors border border-emerald-400/30"
 				>
 					Search
 				</button>
@@ -23,13 +23,13 @@ function SearchBar() {
 			<div className="flex items-center gap-3 shrink-0">
 				<button
 					type="button"
-					className="px-5 py-2 rounded-full bg-emerald-300 text-emerald-950 font-semibold hover:bg-emerald-200 transition-colors"
+					className="px-5 py-2 rounded-full bg-emerald-800 text-emerald-50 font-semibold hover:bg-emerald-700 transition-colors border border-emerald-400/25"
 				>
 					Log In
 				</button>
 				<button
 					type="button"
-					className="px-5 py-2 rounded-full bg-emerald-200 text-emerald-950 font-semibold hover:bg-emerald-100 transition-colors"
+					className="px-5 py-2 rounded-full bg-emerald-700 text-emerald-50 font-semibold hover:bg-emerald-600 transition-colors border border-emerald-400/30"
 				>
 					Sign Up
 				</button>
