@@ -174,21 +174,27 @@ const musicData = {
 };
 //You can add more songs and genres to the musicData object as needed. Any language and song can be added.
 function App() {
+  const [currentSong, setCurrentSong] = React.useState(musicData.punjabi.songs[0])
+
+  const handlePlaySong = (song) => {
+    setCurrentSong(song)
+  }
+
   return (
     <div className="h-screen bg-[radial-gradient(circle_at_15%_10%,#22c55e_0%,#0f5132_35%,#02120d_100%)] p-4">
-      <div className="flex h-full rounded-4xl overflow-hidden border border-emerald-300/20 bg-[#0b2d23]/60 backdrop-blur-xl shadow-[0_25px_80px_rgba(16,185,129,0.35)]">
+      <div className="flex h-full rounded-4xl overflow-hidden border border-emerald-300/40 bg-[#0b2d23]/85 backdrop-blur-xl shadow-[0_25px_80px_rgba(16,185,129,0.35)]">
         <NavBar />
         <div className="flex min-w-0 flex-1">
-          <div className="flex min-w-0 flex-col flex-1 overflow-y-auto scrollbar-hide gap-7 px-8 py-7 bg-white/3">
+          <div className="flex min-w-0 flex-col flex-1 overflow-y-auto scrollbar-hide gap-7 px-8 py-7 bg-white/10">
             <SearchBar />
             {Object.entries(musicData).map(([language, data]) => (
               <div key={language} className="w-full">
                 <h1 className="text-2xl font-bold text-emerald-50 mb-4 capitalize">{language} Songs</h1>
-                <Songlist musicData={data} />
+                <Songlist musicData={data} onPlaySong={handlePlaySong} />
               </div>
             ))}
           </div>
-          <CurrentSong />
+          <CurrentSong currentSong={currentSong} />
         </div>
       </div>
     </div>

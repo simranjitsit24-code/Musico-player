@@ -9,7 +9,7 @@ function SearchBar() {
 					<input
 						type="text"
 						placeholder="Search songs, artists, albums"
-						className="w-full bg-emerald-900/45 border border-emerald-300/30 text-white placeholder:text-emerald-200/60 rounded-full py-2.5 pl-11 pr-4 focus:outline-none focus:ring-2 focus:ring-emerald-300/70"
+						className="w-full bg-emerald-900/70 border border-emerald-300/50 text-white placeholder:text-emerald-200/80 rounded-full py-2.5 pl-11 pr-4 focus:outline-none focus:ring-2 focus:ring-emerald-300/80"
 					/>
 				</div>
 				<button
@@ -23,7 +23,7 @@ function SearchBar() {
 			<div className="flex items-center gap-3 shrink-0">
 				<button
 					type="button"
-					className="px-5 py-2 rounded-full text-emerald-100 border border-emerald-300/30 hover:bg-white/10 transition-colors"
+					className="px-5 py-2 rounded-full bg-emerald-300 text-emerald-950 font-semibold hover:bg-emerald-200 transition-colors"
 				>
 					Log In
 				</button>

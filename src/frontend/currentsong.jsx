@@ -13,10 +13,10 @@ import {
 	MoreHorizontal,
 } from 'lucide-react'
 
-function CurrentSong() {
+function CurrentSong({ currentSong }) {
 	const audioRef = useRef(null)
 	const [isPlaying, setIsPlaying] = useState(false)
-	const [durationInSeconds, setDurationInSeconds] = useState(260)
+	const [durationInSeconds, setDurationInSeconds] = useState(currentSong?.duration ? parseInt(currentSong.duration) * 60 : 260)
 	const [currentTimeInSeconds, setCurrentTimeInSeconds] = useState(0)
 
 	const formatTime = (seconds) => {
@@ -100,35 +100,35 @@ function CurrentSong() {
 	]
 
 	return (
-		<aside className="w-80 shrink-0 bg-[#07271c]/80 border-l border-emerald-300/20 px-5 py-6 hidden xl:flex xl:flex-col gap-5">
+		<aside className="w-80 shrink-0 bg-[#07271c]/95 border-l border-emerald-300/40 px-5 py-6 hidden xl:flex xl:flex-col gap-5">
 			<audio
 				ref={audioRef}
 				src="/My%20Prime.mp3"
 				preload="metadata"
 			/>
 
-			<div className="bg-emerald-900/45 rounded-3xl p-4 shadow-lg border border-emerald-300/20 hover:border-emerald-200/40 hover:shadow-emerald-500/20 transition-all duration-300">
+			<div className="bg-emerald-900/80 rounded-3xl p-4 shadow-lg border border-emerald-300/40 hover:border-emerald-200/60 hover:shadow-emerald-500/40 transition-all duration-300">
 				<img
-					src="https://imgs.search.brave.com/uOVh6hH8VnGN268bY8J3Wc-Izy-8dxI8QO3JIqc-KKQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pMS5z/bmRjZG4uY29tL2Fy/dHdvcmtzLXNGS3p1/Ymppbzd1anJieHIt/RURsUlN3LXQxMDgw/eDEwODAuanBn"
+					src={currentSong?.img || "https://imgs.search.brave.com/uOVh6hH8VnGN268bY8J3Wc-Izy-8dxI8QO3JIqc-KKQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pMS5z/bmRjZG4uY29tL2Fy/dHdvcmtzLXNGS3p1/Ymppbzd1anJieHIt/RURsUlN3LXQxMDgw/eDEwODAuanBn"}
 					alt="Current song"
 					className="w-full h-56 rounded-2xl object-cover transition-transform duration-300 hover:scale-[1.02]"
 				/>
 
 				<div className="mt-4 flex items-center justify-between gap-3">
 					<div className="min-w-0">
-						<h3 className="text-white font-bold text-lg truncate">My Prime</h3>
-						<p className="text-slate-300 text-sm">Navaan Sandhu</p>
+						<h3 className="text-white font-bold text-lg truncate">{currentSong?.name || "My Prime"}</h3>
+						<p className="text-slate-300 text-sm">{currentSong?.singer || "Navaan Sandhu"}</p>
 					</div>
 					<button
 						type="button"
-						className="w-9 h-9 rounded-full bg-white/10 hover:bg-emerald-200 hover:text-emerald-900 transition-all duration-200 flex items-center justify-center text-white"
+						className="w-9 h-9 rounded-full bg-white/25 hover:bg-emerald-200 hover:text-emerald-900 transition-all duration-200 flex items-center justify-center text-white"
 					>
 						<Plus size={18} className="transition-transform duration-200 hover:scale-110" />
 					</button>
 				</div>
 			</div>
 
-			<div className="bg-emerald-900/35 rounded-2xl p-4 border border-emerald-300/20 hover:border-emerald-200/40 transition-colors duration-300">
+<div className="bg-emerald-900/70 rounded-2xl p-4 border border-emerald-300/40 hover:border-emerald-200/60 transition-colors duration-300">
 				<div className="flex items-center justify-between text-slate-200">
 					<div className="flex items-center gap-3">
 						<Heart size={16} className="cursor-pointer transition-all duration-200 hover:text-emerald-200 hover:scale-110" />
@@ -157,7 +157,7 @@ function CurrentSong() {
 				<div className="mt-4">
 					<div
 						onClick={handleProgressClick}
-						className="w-full h-1 bg-emerald-200/25 rounded-full overflow-hidden transition-all duration-200 hover:h-1.5 cursor-pointer"
+						className="w-full h-1 bg-emerald-200/45 rounded-full overflow-hidden transition-all duration-200 hover:h-1.5 cursor-pointer"
 					>
 						<div className="h-full bg-emerald-100 rounded-full" style={{ width: `${progressPercent}%` }} />
 					</div>
@@ -168,7 +168,7 @@ function CurrentSong() {
 				</div>
 			</div>
 
-			<div className="bg-emerald-900/35 rounded-2xl p-4 border border-emerald-300/20 hover:border-emerald-200/40 transition-colors duration-300">
+			<div className="bg-emerald-900/70 rounded-2xl p-4 border border-emerald-300/40 hover:border-emerald-200/60 transition-colors duration-300">
 				<div className="flex items-center justify-between mb-3">
 					<h4 className="text-white font-semibold text-xl">Tags</h4>
 					<button
@@ -184,7 +184,7 @@ function CurrentSong() {
 						<button
 							key={tag.label}
 							type="button"
-							className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-950/45 border border-emerald-300/20 text-emerald-100 text-sm hover:border-emerald-200/60 hover:text-white hover:bg-emerald-800/40 transition-all duration-200"
+							className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-950/65 border border-emerald-300/40 text-emerald-100 text-sm hover:border-emerald-200/70 hover:text-white hover:bg-emerald-800/60 transition-all duration-200"
 						>
 							<span className="text-xs">{tag.icon}</span>
 							<span>{tag.label}</span>
